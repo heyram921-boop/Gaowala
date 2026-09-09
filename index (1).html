@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fresh Gaon Sabji</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f7f3;
+    color:#222;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+#app{
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:64px;
+    background:#166534;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 18px;
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+
+    z-index:1000;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.18);
+}
+
+.logo{
+    font-size:19px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#bbf7d0;
+}
+
+.cart{
+    background:white;
+    color:#166534;
+
+    padding:8px 13px;
+    border-radius:20px;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   SCREEN
+========================= */
+
+.screen{
+    min-height:100vh;
+    padding-top:64px;
+
+    animation:openPage .25s ease;
+}
+
+@keyframes openPage{
+
+    from{
+        opacity:0;
+        transform:translateX(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.home{
+
+    min-height:100vh;
+
+    padding-top:64px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    padding-left:20px;
+    padding-right:20px;
+
+    background-image:
+
+    linear-gradient(
+        rgba(0,0,0,.52),
+        rgba(0,0,0,.52)
+    ),
+
+    /*
+      ==============================
+      अपनी किसान वाली IMAGE
+      बाद में यहाँ बदलें
+      ==============================
+    */
+
+    url("https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1600&q=80");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.home-content{
+    max-width:650px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.18);
+
+    border:1px solid rgba(255,255,255,.4);
+
+    margin-bottom:20px;
+
+    font-size:14px;
+}
+
+.home h1{
+
+    font-size:45px;
+
+    line-height:1.15;
+
+    margin-bottom:18px;
+}
+
+.home p{
+
+    font-size:18px;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+}
+
+.buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+
+    border:none;
+
+    padding:15px 28px;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.order-btn{
+
+    background:#f59e0b;
+
+    color:white;
+}
+
+.category-btn{
+
+    background:white;
+
+    color:#166534;
+}
+
+
+/* =========================
+   INNER SCREEN
+========================= */
+
+.inner{
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:25px 16px 60px;
+}
+
+.back{
+
+    border:none;
+
+    background:white;
+
+    color:#166534;
+
+    padding:11px 17px;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+    margin-bottom:22px;
+}
+
+.title{
+
+    color:#14532d;
+
+    font-size:30px;
+
+    margin-bottom:8px;
+}
+
+.subtitle{
+
+    color:#666;
+
+    margin-bottom:25px;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.category-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(140px,1fr));
+
+    gap:15px;
+}
+
+.category-card{
+
+    background:white;
+
+    padding:20px 10px;
+
+    border-radius:16px;
+
+    text-align:center;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+
+    border:1px solid #e5ebe5;
+}
+
+.category-icon{
+
+    font-size:42px;
+
+    margin-bottom:9px;
+}
+
+.category-name{
+
+    font-weight:bold;
+
+    margin-bottom:7px;
+}
+
+.stock{
+
+    font-size:13px;
+
+    color:#16a34a;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.card{
+
+    background:white;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 5px 22px rgba(0,0,0,.07);
+}
+
+.card-title{
+
+    color:#166534;
+
+    font-size:19px;
+
+    margin-bottom:18px;
+}
+
+.group{
+
+    margin-bottom:16px;
+}
+
+.group label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    color:#444;
+}
+
+.group input,
+.group select{
+
+    width:100%;
+
+    padding:13px;
+
+    border:1px solid #d5d9d5;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:15px;
+
+    background:white;
+}
+
+
+/* =========================
+   VEGETABLE ROW
+========================= */
+
+.veg-row{
+
+    background:#f8faf8;
+
+    border:1px solid #e1e8e1;
+
+    padding:14px;
+
+    border-radius:13px;
+
+    margin-bottom:12px;
+}
+
+.veg-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 110px 110px;
+
+    gap:10px;
+}
+
+.remove{
+
+    width:100%;
+
+    padding:9px;
+
+    border:1px solid #fecaca;
+
+    background:#fef2f2;
+
+    color:#dc2626;
+
+    border-radius:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.add{
+
+    width:100%;
+
+    padding:13px;
+
+    border:1px dashed #22c55e;
+
+    background:#f0fdf4;
+
+    color:#166534;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary{
+
+    background:#f0fdf4;
+
+    border:1px solid #bbf7d0;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    margin-top:20px;
+}
+
+.summary h3{
+
+    color:#166534;
+
+    margin-bottom:10px;
+}
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:10px 0;
+
+    border-bottom:1px solid #dcefe1;
+
+    font-size:14px;
+}
+
+.summary-row:last-child{
+
+    border-bottom:none;
+}
+
+.confirm{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#16a34a;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success{
+
+    min-height:100vh;
+
+    padding-top:64px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+}
+
+.success-card{
+
+    width:100%;
+
+    max-width:500px;
+
+    background:white;
+
+    padding:35px 25px;
+
+    border-radius:22px;
+
+    text-align:center;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.10);
+}
+
+.success-icon{
+
+    width:75px;
+
+    height:75px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:40px;
+
+    font-weight:bold;
+}
+
+.success-card h2{
+
+    color:#166534;
+
+    margin-bottom:10px;
+}
+
+.order-id{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    margin:16px 0;
+
+    border-radius:8px;
+
+    background:#f0fdf4;
+
+    color:#166534;
+
+    font-weight:bold;
+}
+
+.home-again{
+
+    width:100%;
+
+    margin-top:18px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:11px;
+
+    background:#166534;
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .home h1{
+        font-size:32px;
+    }
+
+    .home p{
+        font-size:16px;
+    }
+
+    .title{
+        font-size:25px;
+    }
+
+    .veg-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     सिर्फ एक APP CONTAINER
+     
+     Home, Category, Order, Success
+     सब इसी के अंदर बदलेंगे।
+================================================== -->
+
+<div id="app"></div>
+
+
+<script>
+
+/* ==================================================
+   VEGETABLE DATABASE
+
+   अभी यह demo stock है।
+
+   बाद में यही data Firebase से आएगा।
+================================================== */
+
+const products = [
+
+    {
+        id:"potato",
+        name:"आलू",
+        icon:"🥔",
+        stock:50,
+        unit:"Kg"
+    },
+
+    {
+        id:"tomato",
+        name:"टमाटर",
+        icon:"🍅",
+        stock:30,
+        unit:"Kg"
+    },
+
+    {
+        id:"onion",
+        name:"प्याज़",
+        icon:"🧅",
+        stock:40,
+        unit:"Kg"
+    },
+
+    {
+        id:"carrot",
+        name:"गाजर",
+        icon:"🥕",
+        stock:25,
+        unit:"Kg"
+    },
+
+    {
+        id:"cabbage",
+        name:"पत्ता गोभी",
+        icon:"🥬",
+        stock:20,
+        unit:"Piece"
+    },
+
+    {
+        id:"chilli",
+        name:"हरी मिर्च",
+        icon:"🌶️",
+        stock:15,
+        unit:"Kg"
+    },
+
+    {
+        id:"brinjal",
+        name:"बैंगन",
+        icon:"🍆",
+        stock:20,
+        unit:"Kg"
+    },
+
+    {
+        id:"cucumber",
+        name:"खीरा",
+        icon:"🥒",
+        stock:25,
+        unit:"Kg"
+    },
+
+    {
+        id:"peas",
+        name:"मटर",
+        icon:"🫛",
+        stock:20,
+        unit:"Kg"
+    },
+
+    {
+        id:"cauliflower",
+        name:"फूलगोभी",
+        icon:"🥦",
+        stock:20,
+        unit:"Piece"
+    },
+
+    {
+        id:"bottle-gourd",
+        name:"लौकी",
+        icon:"🥒",
+        stock:20,
+        unit:"Piece"
+    },
+
+    {
+        id:"pumpkin",
+        name:"कद्दू",
+        icon:"🎃",
+        stock:20,
+        unit:"Piece"
+    },
+
+    {
+        id:"okra",
+        name:"भिंडी",
+        icon:"🫘",
+        stock:20,
+        unit:"Kg"
+    },
+
+    {
+        id:"coriander",
+        name:"धनिया",
+        icon:"🌿",
+        stock:10,
+        unit:"Kg"
+    }
+
+];
+
+
+/* ==================================================
+   CART
+================================================== */
+
+let cart = [];
+
+
+/* ==================================================
+   HOME
+================================================== */
+
+function showHome(){
+
+    document.getElementById("app").innerHTML = `
+
+        <header class="header">
+
+            <div class="logo">
+                🥬 Fresh <span>Gaon Sabji</span>
+            </div>
+
+            <div class="cart">
+                🛒 <span id="cartCount">0</span>
+            </div>
+
+        </header>
+
+
+        <main class="screen home">
+
+            <div class="home-content">
+
+                <div class="badge">
+                    🌱 Fresh • Local • Trusted
+                </div>
+
+
+                <h1>
+                    ताज़ी सब्ज़ी<br>
+                    सीधे आपके घर
+                </h1>
+
+
+                <p>
+                    अपने आसपास के गाँवों से
+                    ताज़ी सब्ज़ियाँ आसानी से
+                    मंगाएँ।
+                </p>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="btn order-btn"
+                        onclick="showOrder()">
+
+                        🛒 Order Now
+
+                    </button>
+
+
+                    <button
+                        class="btn category-btn"
+                        onclick="showCategories()">
+
+                        🥕 Categories
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    `;
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* ==================================================
+   CATEGORY PAGE
+================================================== */
+
+function showCategories(){
+
+    let html = "";
+
+    products.forEach(product => {
+
+        let availableText = "";
+
+        if(product.stock > 0){
+
+            availableText =
+            `Available: ${product.stock} ${product.unit}`;
+
+        }
+
+        else{
+
+            availableText =
+            "❌ Out of Stock";
+
+        }
+
+
+        html += `
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    ${product.icon}
+                </div>
+
+                <div class="category-name">
+                    ${product.name}
+                </div>
+
+                <div class="stock">
+                    ${availableText}
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById("app").innerHTML = `
+
+        <header class="header">
+
+            <div class="logo">
+                🥬 Fresh <span>Gaon Sabji</span>
+            </div>
+
+            <div class="cart">
+                🛒 ${cart.length}
+            </div>
+
+        </header>
+
+
+        <main class="screen">
+
+            <div class="inner">
+
+                <button
+                    class="back"
+                    onclick="showHome()">
+
+                    ← Back
+
+                </button>
+
+
+                <h1 class="title">
+                    🥕 Vegetable Categories
+                </h1>
+
+
+                <p class="subtitle">
+                    अभी उपलब्ध सब्ज़ियाँ और उनका stock
+                </p>
+
+
+                <div class="category-grid">
+
+                    ${html}
+
+                </div>
+
+            </div>
+
+        </main>
+
+    `;
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* ==================================================
+   ORDER PAGE
+================================================== */
+
+function showOrder(){
+
+    document.getElementById("app").innerHTML = `
+
+        <header class="header">
+
+            <div class="logo">
+                🥬 Fresh <span>Gaon Sabji</span>
+            </div>
+
+            <div class="cart">
+                🛒 <span id="cartCount">0</span>
+            </div>
+
+        </header>
+
+
+        <main class="screen">
+
+            <div class="inner">
+
+
+                <button
+                    class="back"
+                    onclick="showHome()">
+
+                    ← Back
+
+                </button>
+
+
+                <h1 class="title">
+                    🛒 Order करें
+                </h1>
+
+
+                <p class="subtitle">
+                    Customer details और vegetables भरें।
+                </p>
+
+
+                <!-- CUSTOMER -->
+
+                <div class="card">
+
+                    <h3 class="card-title">
+                        👤 Customer Information
+                    </h3>
+
+
+                    <div class="group">
+
+                        <label>
+                            Customer Name *
+                        </label>
+
+                        <input
+                            id="customerName"
+                            type="text"
+                            placeholder="पूरा नाम">
+
+                    </div>
+
+
+                    <div class="group">
+
+                        <label>
+                            Village Name *
+                        </label>
+
+                        <input
+                            id="village"
+                            type="text"
+                            placeholder="गाँव का नाम">
+
+                    </div>
+
+
+                    <div class="group">
+
+                        <label>
+                            Mobile Number *
+                        </label>
+
+                        <input
+                            id="mobile"
+                            type="tel"
+                            maxlength="10"
+                            placeholder="10 digit mobile number">
+
+                    </div>
+
+
+                    <div class="group">
+
+                        <label>
+                            Delivery Address / Landmark
+                        </label>
+
+                        <input
+                            id="address"
+                            type="text"
+                            placeholder="घर / landmark">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- VEGETABLES -->
+
+                <div class="card">
+
+                    <h3 class="card-title">
+                        🥬 Select Vegetables
+                    </h3>
+
+
+                    <div id="vegetableList"></div>
+
+
+                    <button
+                        class="add"
+                        onclick="addVegetable()">
+
+                        ＋ और सब्ज़ी जोड़ें
+
+                    </button>
+
+
+                    <div class="summary">
+
+                        <h3>
+                            📋 आपका Order
+                        </h3>
+
+
+                        <div id="summaryList">
+
+                            कोई सब्ज़ी नहीं चुनी गई।
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="confirm"
+                        onclick="placeOrder()">
+
+                        ✅ Confirm Order
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </main>
+
+    `;
+
+
+    addVegetable();
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* ==================================================
+   ADD VEGETABLE
+================================================== */
+
+function addVegetable(){
+
+    const container =
+    document.getElementById(
+        "vegetableList"
+    );
+
+
+    if(!container){
+        return;
+    }
+
+
+    const row =
+    document.createElement("div");
+
+
+    row.className =
+    "veg-row";
+
+
+    let options = "";
+
+
+    products.forEach(product => {
+
+        if(product.stock > 0){
+
+            options += `
+
+                <option value="${product.id}">
+
+                    ${product.icon}
+                    ${product.name}
+
+                </option>
+
+            `;
+
+        }
+
+    });
+
+
+    row.innerHTML = `
+
+        <div class="veg-grid">
+
+
+            <div class="group">
+
+                <label>
+                    Vegetable
+                </label>
+
+                <select class="vegetable">
+
+                    ${options}
+
+                </select>
+
+            </div>
+
+
+            <div class="group">
+
+                <label>
+                    Quantity
+                </label>
+
+                <input
+                    class="quantity"
+                    type="number"
+                    min="1"
+                    value="1">
+
+            </div>
+
+
+            <div class="group">
+
+                <label>
+                    Unit
+                </label>
+
+                <select class="unit">
+
+                    <option>Kg</option>
+                    <option>Gram</option>
+                    <option>Piece</option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="remove"
+            onclick="removeVegetable(this)">
+
+            ✕ Remove
+
+        </button>
+
+    `;
+
+
+    container.appendChild(row);
+
+
+    updateSummary();
+
+}
+
+
+/* ==================================================
+   REMOVE
+================================================== */
+
+function removeVegetable(button){
+
+    button
+    .parentElement
+    .remove();
+
+
+    updateSummary();
+
+}
+
+
+/* ==================================================
+   SUMMARY
+================================================== */
+
+function updateSummary(){
+
+    const rows =
+    document.querySelectorAll(
+        ".veg-row"
+    );
+
+
+    const summary =
+    document.getElementById(
+        "summaryList"
+    );
+
+
+    const count =
+    document.getElementById(
+        "cartCount"
+    );
+
+
+    if(count){
+
+        count.innerText =
+        rows.length;
+
+    }
+
+
+    if(!summary){
+        return;
+    }
+
+
+    if(rows.length === 0){
+
+        summary.innerHTML =
+        "कोई सब्ज़ी नहीं चुनी गई।";
+
+        return;
+
+    }
+
+
+    summary.innerHTML = "";
+
+
+    rows.forEach(row => {
+
+        const id =
+        row.querySelector(
+            ".vegetable"
+        ).value;
+
+
+        const product =
+        products.find(
+            item => item.id === id
+        );
+
+
+        const quantity =
+        row.querySelector(
+            ".quantity"
+        ).value;
+
+
+        const unit =
+        row.querySelector(
+            ".unit"
+        ).value;
+
+
+        summary.innerHTML += `
+
+            <div class="summary-row">
+
+                <span>
+                    ${product.icon}
+                    ${product.name}
+                </span>
+
+                <strong>
+                    ${quantity} ${unit}
+                </strong>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ==================================================
+   LIVE UPDATE
+================================================== */
+
+document.addEventListener(
+    "input",
+    function(event){
+
+        if(
+            event.target.classList.contains(
+                "quantity"
+            )
+        ){
+
+            updateSummary();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "change",
+    function(event){
+
+        if(
+
+            event.target.classList.contains(
+                "vegetable"
+            )
+
+            ||
+
+            event.target.classList.contains(
+                "unit"
+            )
+
+        ){
+
+            updateSummary();
+
+        }
+
+    }
+);
+
+
+/* ==================================================
+   PLACE ORDER
+================================================== */
+
+function placeOrder(){
+
+    const name =
+    document
+    .getElementById("customerName")
+    .value
+    .trim();
+
+
+    const village =
+    document
+    .getElementById("village")
+    .value
+    .trim();
+
+
+    const mobile =
+    document
+    .getElementById("mobile")
+    .value
+    .trim();
+
+
+    const address =
+    document
+    .getElementById("address")
+    .value
+    .trim();
+
+
+    /* =====================
+       VALIDATION
+    ===================== */
+
+    if(!name){
+
+        alert(
+            "कृपया अपना नाम डालें।"
+        );
+
+        return;
+
+    }
+
+
+    if(!village){
+
+        alert(
+            "कृपया गाँव का नाम डालें।"
+        );
+
+        return;
+
+    }
+
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        alert(
+            "सही 10 digit mobile number डालें।"
+        );
+
+        return;
+
+    }
+
+
+    const rows =
+    document.querySelectorAll(
+        ".veg-row"
+    );
+
+
+    if(rows.length === 0){
+
+        alert(
+            "कम से कम एक सब्ज़ी चुनें।"
+        );
+
+        return;
+
+    }
+
+
+    /* =====================
+       CREATE ITEMS
+    ===================== */
+
+    const items = [];
+
+
+    rows.forEach(row => {
+
+        const id =
+        row.querySelector(
+            ".vegetable"
+        ).value;
+
+
+        const product =
+        products.find(
+            item => item.id === id
+        );
+
+
+        const quantity =
+        Number(
+            row.querySelector(
+                ".quantity"
+            ).value
+        );
+
+
+        const unit =
+        row.querySelector(
+            ".unit"
+        ).value;
+
+
+        if(quantity > 0){
+
+            items.push({
+
+                productId:id,
+
+                vegetable:
+                product.name,
+
+                quantity:quantity,
+
+                unit:unit
+
+            });
+
+        }
+
+    });
+
+
+    /* =====================
+       ORDER ID
+    ===================== */
+
+    const now =
+    new Date();
+
+
+    const orderId =
+    "GS-" +
+    now
+    .getTime()
+    .toString()
+    .slice(-8);
+
+
+    /* =====================
+       FINAL ORDER OBJECT
+
+       Firebase में बाद में
+       यही object जाएगा।
+    ===================== */
+
+    const order = {
+
+        orderId:orderId,
+
+        customerName:name,
+
+        village:village,
+
+        mobile:mobile,
+
+        address:address,
+
+        items:items,
+
+        dateTime:
+        now.toLocaleString(
+            "en-IN"
+        ),
+
+        status:"NEW"
+
+    };
+
+
+    /* अभी testing के लिए */
+
+    localStorage.setItem(
+
+        "latestOrder",
+
+        JSON.stringify(order)
+
+    );
+
+
+    /* =====================
+       SUCCESS
+    ===================== */
+
+    showSuccess(order);
+
+}
+
+
+/* ==================================================
+   SUCCESS
+================================================== */
+
+function showSuccess(order){
+
+    document.getElementById("app").innerHTML = `
+
+        <header class="header">
+
+            <div class="logo">
+                🥬 Fresh <span>Gaon Sabji</span>
+            </div>
+
+        </header>
+
+
+        <main class="success">
+
+            <div class="success-card">
+
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+
+                <h2>
+                    Order Successfully Placed!
+                </h2>
+
+
+                <p>
+                    आपका order हमें मिल गया है।
+                </p>
+
+
+                <div class="order-id">
+
+                    Order ID:
+                    ${order.orderId}
+
+                </div>
+
+
+                <p>
+                    📅 ${order.dateTime}
+                </p>
+
+
+                <button
+                    class="home-again"
+                    onclick="showHome()">
+
+                    🏠 Home पर जाएँ
+
+                </button>
+
+
+            </div>
+
+        </main>
+
+    `;
+
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* ==================================================
+   START
+================================================== */
+
+showHome();
+
+</script>
+
+</body>
+</html>
